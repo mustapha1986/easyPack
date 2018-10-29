@@ -1,0 +1,111 @@
+<!-- Modal -->
+<div class="modal fade" id="configDetails{{ elem.id }}" tabindex="-1" role="dialog"
+     aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Informations Client/Transporteur</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {{ form_start(form , {'action': path('edit_config' , {'id' : elem.id}) , 'attr' : {'class' : 'form-horizontal'}}) }}
+
+
+            <div class="modal-body">
+                <div class="card mb-4">
+                    <div class="card-block">
+                        {{ form_errors(form) }}
+
+                        <fieldset>
+                            <legend class="card-subtitle mb-2 text-muted">Informations</legend>
+                            <!-- Name input-->
+                            <div class="form-group row">
+                                {{ form_label(form.client ,"Client",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.client) }}
+                                <div class="col-md-7">
+                                 {{ form_widget(form.client , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                {{ form_label(form.code ,"code",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.code) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.code , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </fieldset>
+
+
+                        <fieldset>
+                            <legend class="card-subtitle mb-2 text-muted">Transporteur</legend>
+
+                            <div class="form-group row">
+                                {{ form_label(form.carrier.name ,"Transporteur",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.carrier) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.carrier.name , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                {{ form_label(form.carrier.carrierCode ,"Code transporteur",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.carrier.carrierCode) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.carrier.carrierCode , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                {{ form_label(form.carrier.title ,"Titre",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.carrier.title) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.carrier.title , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                {{ form_label(form.carrier.location ,"Location",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.carrier.location) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.carrier.location , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                {{ form_label(form.carrier.dateFrom ,"Date début",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.carrier.dateFrom) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.carrier.dateFrom , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                {{ form_label(form.carrier.dateTo ,"Date Fin",{'label_attr' : {'class' : 'col-md-5 col-form-label'}}) }}
+                                {{ form_errors(form.carrier.dateTo) }}
+                                <div class="col-md-7">
+                                    {{ form_widget(form.carrier.dateTo , {'attr' : {'class' : 'form-control'}}) }}
+                                </div>
+                            </div>
+                        </fieldset>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                {% if form.save is defined %}
+                    {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary '}}) }}
+                {% endif %}
+            </div>
+
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

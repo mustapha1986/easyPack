@@ -1,0 +1,80 @@
+{% extends 'layout.html.twig' %}
+{% block body %}
+
+
+    {% for message in app.flashes('notice') %}
+        <div class="flash-notice">
+            <div class="alert bg-info" role="alert">
+                {{ message }}
+            </div>
+        </div>
+    {% endfor %}
+
+    <section class="row">
+        <div class="col-sm-12">
+            <section class="row">
+                <div class="col-12">
+                    <h3 class="mb-4">Liste des transporteurs</h3>
+
+
+                    <div class="dropdown card-title-btn-container">
+                        <a class="btn btn-sm btn-subtle" type="button" href="{{ path('newConfig') }}">
+                            <em class="fa fa-plus"></em>Ajouter</a>
+
+                    </div>
+
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Client</th>
+                        <th>Transporteur</th>
+                        <th>Code Transporteur</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <div>
+                        {% for elem in clientHasCarrierList %}
+
+                            <tr class="elem{{ elem.id }}" data-toggle="collapse" data-target="#group-of-rows-{{ elem.id }}"
+                                aria-expanded="false"
+                                aria-controls="group-of-rows-{{ elem.id }}">
+                                <td>{{ elem.id }}</td>
+                                <td class="span3">{{ elem.client.name }}</td>
+                                <td class="span3">{{ elem.carrier.name }}</td>
+                                <td class="span3">{{ elem.carrier.carrierCode }}</td>
+                                <td>
+
+
+                                    <button class="details btn btn-secondary btn-circle margin" type="button"
+                                            data-id="{{ elem.id }}" data-toggle="modal"
+                                            data-target="#configDetails{{ elem.id }}">
+                                        <span class="fa fa-eye"></span>
+                                    </button>
+
+                                    <button class="transporteurEdit btn btn-secondary btn-circle margin" type="button"
+                                            data-id="{{ elem.id }}">
+                                        <span class="fa fa-edit"></span>
+                                    </button>
+
+                                    <button class="transporteurDelete btn btn-secondary btn-circle margin"
+                                            data-id="{{ elem.id }}" type="button">
+                                        <span class="fa fa-trash"></span>
+                                    </button>
+
+                                </td>
+                            </tr>
+
+                        {% endfor %}
+
+                    </div>
+                </table>
+            </section>
+        </div>
+    </section>
+
+    <div id="modal"></div>
+
+{% endblock %}

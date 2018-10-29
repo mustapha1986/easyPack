@@ -1,0 +1,58 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <section class="row">
+        <div class="col-sm-12">
+            <section class="row">
+                <div class="col-12">
+                    <div class="card mb-4">
+                        <div class="card-block">
+
+                            <h3 class="mb-4">Nouveau transporteur</h3>
+                        </div>
+                        <div class="col-12">
+
+                            {{ form_start(form , {'attr' : {'class' : 'form-horizontal'}}) }}
+
+                            {{ form_row(form.client) }}
+
+                            <div class="form-group">
+                                <label class="control-label col-12 no-padding">Transporteur</label>
+                                <select name="carrier" class="carriers form-control">
+                                    <option selected="selected"></option>
+                                    {% for key,value in carriers %}
+                                        <option value="{{ key }}">{{ value }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+
+
+
+                            {# render each row and field in the embedded form, in this example it's rendering the experience (Exp) fiels as rows #}
+                            <div id="exp_list">
+                                    {{ form_row(form.code) }}
+                                {% if form.carrier is defined %}
+                                    {% for row in form.carrier %}
+                                        {{ form_row(row) }}
+                                    {% endfor %}
+                                {% endif %}
+
+                            </div>
+
+                            <div class="form-group">
+                                {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary btn-md float-right'}}) }}
+                                <br><br>
+                            </div>
+
+                            {{ form_end(form) }}
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+
+{% endblock %}

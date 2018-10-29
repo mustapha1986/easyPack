@@ -1,0 +1,5 @@
+parameters:
+    carriers:
+      1 : 'Colissimo'
+      2 : 'Imix'
+      3 : 'Chrono'
